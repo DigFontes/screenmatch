@@ -1,17 +1,19 @@
+package br.com.alura.screenmatch.principal;
+
 import br.com.alura.screenmatch.calculo.RecomendationFilter;
 import br.com.alura.screenmatch.calculo.TimeCalculator;
 import br.com.alura.screenmatch.modelos.Episode;
 import br.com.alura.screenmatch.modelos.Film;
 import br.com.alura.screenmatch.modelos.Serie;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
 
         System.out.println("\n***********************************************************************\n");
-        Film myMovie = new Film();
-        myMovie.setNome("Um Sonho de Liberdade");
-        myMovie.setAnoDeLacamento(1994);
+        Film myMovie = new Film("Um Sonho de Liberdade", 1994);
         myMovie.setDuracaoEmMinutos(142);
 
         myMovie.exibeFichaTecnica();
@@ -24,9 +26,7 @@ public class Main {
 
         System.out.println("\n***********************************************************************\n");
 
-        Serie mySerie = new Serie();
-        mySerie.setNome("Two and Half Men");
-        mySerie.setAnoDeLacamento(2003);
+        Serie mySerie = new Serie("Two and Half Men", 2003);
         mySerie.setIncluidoNoPlano(true);
         mySerie.setAtiva(true);
         mySerie.setTemporadas(12);
@@ -63,6 +63,18 @@ public class Main {
         episode.setTotalViews(100);
         filter.filter(episode);
 
+        System.out.println("\n***********************************************************************\n");
+
+        var filmeDoPaulo = new Film("Dogville", 2003);
+        filmeDoPaulo.setDuracaoEmMinutos(200);
+        filmeDoPaulo.avalia(10);
+
+        ArrayList<Film> moviesList = new ArrayList<>();
+        moviesList.add(filmeDoPaulo);
+        moviesList.add(myMovie);
+        System.out.println("Size of the moviesList: " + moviesList.size());
+        System.out.println("The first movie in the list is: " + moviesList.get(0).getNome());
+        System.out.println(moviesList);
     }
 
 }
